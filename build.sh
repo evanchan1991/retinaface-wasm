@@ -1,13 +1,11 @@
-cd emsdk
-./emsdk install 3.1.71
-./emsdk activate 3.1.71
+#!/bin/bash
+
+# 激活 Emscripten 环境（需替换为你的 emsdk 路径）
+cd ../emsdk
 source emsdk_env.sh
-
-cd ..
-wget https://github.com/Tencent/ncnn/releases/download/20240102/ncnn-20240102-webassembly.zip
-unzip ncnn-20240102-webassembly.zip
-
-mkdir build
-cd build
-cmake -G Ninja .. -DCMAKE_BUILD_TYPE=Release
-cmake --build . --config Release
+cd -
+mkdir build_wasm && cd build_wasm
+# 关键：添加小程序必需的编译参数
+emcmake cmake -DCMAKE_BUILD_TYPE=Release -DWASM_ASYNC_COMPILATION=0 ../ 
+emmake make -j4
+cd ../
