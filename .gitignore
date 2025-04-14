@@ -3,6 +3,8 @@ cmake-build-release
 cmake-build-release_basic
 cmake-build-release_chrome57
 cmake-build-release_simd
+build
+build_wasm
 ncnn-*
 /*.jpg
 /index.ts
